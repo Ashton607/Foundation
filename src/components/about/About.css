@@ -1,0 +1,199 @@
+/* About.css */
+.about-container {
+    margin: 80px auto;
+    width: 90%;
+    padding: 100px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* About row with animation trigger */
+.about {
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* When about row enters viewport */
+.about.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image container with slide-in animation */
+.about-left {
+    position: relative;
+    flex: 1; 
+    min-width: 0; 
+    height: 400px; 
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+
+/* Image slide-in animation */
+.about.animate-in .about-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-left img {
+    width: 100%;
+    object-fit: cover; 
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+/* About right text with delayed slide-in */
+.about-right {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 40px;
+    background: #d8d8d891;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+}
+
+/* Text slide-in animation (delayed after image) */
+.about.animate-in .about-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-right h2 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #041f69;
+}
+
+.about-right p {
+    line-height: 1.5;
+    color: #333;
+    font-size: 18px;
+    padding: 30px 0;
+}
+
+.about-right p:last-child {
+    margin-bottom: 0;
+}
+
+
+.about:nth-child(even) .about-left {
+    transform: translateX(50px); 
+}
+
+.about:nth-child(even) .about-right {
+    transform: translateX(-50px); 
+}
+
+.about:nth-child(even).animate-in .about-left {
+    transform: translateX(0);
+}
+
+.about:nth-child(even).animate-in .about-right {
+    transform: translateX(0);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .about-container {
+        padding: 50px;
+    }
+    
+    .about {
+        gap: 30px;
+    }
+    
+    .about-left {
+        height: 350px;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-container {
+        padding: 40px;
+    }
+    
+    .about {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .about-left {
+        height: 300px;
+        width: 100%;
+        transform: translateY(30px) !important; /* Reset for mobile */
+    }
+    
+    .about-right {
+        width: 100%;
+        padding: 30px;
+        transform: translateY(30px) !important; /* Reset for mobile */
+    }
+    
+    .about.animate-in .about-left,
+    .about.animate-in .about-right {
+        transform: translateY(0) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        padding: 30px;
+        gap: 40px;
+    }
+    
+    .about-left {
+        height: 250px;
+    }
+    
+    .about-right h2 {
+        font-size: 26px;
+    }
+    
+    .about-right p {
+        font-size: 16px;
+    }
+    
+    .about-right {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container {
+        padding: 20px;
+        gap: 30px;
+    }
+    
+    .about-left {
+        height: 200px;
+    }
+    
+    .about-right h2 {
+        font-size: 22px;
+    }
+    
+    .about-right p {
+        font-size: 15px;
+    }
+    
+    .about-right {
+        padding: 20px;
+    }
+}
